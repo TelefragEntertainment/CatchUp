@@ -47,11 +47,23 @@ float() GetMaxHealth =
 			dprint(ftos(modifier));
 			dprint(".\n");
 	}
-
+	
 	if(!deathmatch && skill == 3) {
+		if(modifier > 0)
+		{
+			sprint(self, "CatchUp Boosting HP ");
+			sprint(self, ftos( rint(50 * (1 + modifier) )));
+			sprint(self,".\n");
+		}
 		return rint(50 * (1 + modifier));
 	}
 	else {
+		if(modifier > 0)
+		{
+			sprint(self, "CatchUp Boosting HP ");
+			sprint(self, ftos( rint(100 * (1 + modifier) )));
+			sprint(self,".\n");
+		}
 		return rint(100 * (1 + modifier));
 	}
 }
@@ -94,7 +106,7 @@ void() SetChangeParms =
 void() SetNewParms =
 {
 	parm1 = IT_SHOTGUN | IT_AXE;
-	parm2 = GetMaxHealth();
+	parm2 = 100;
 	parm3 = 0;
 	parm4 = 25;
 	parm5 = 0;
